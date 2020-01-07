@@ -1,20 +1,27 @@
 import React from 'react'
-import {Route, Redirect, Switch} from 'react-router-dom'
+import { HashRouter as Router, Route, Redirect, Switch } from 'react-router-dom'
 
-const renderRoutes = (routes) => {
-    return  <Switch>
-        {routes.map((route, i) => (
-            <Route
-                key={route.key || i}
-                path={route.path}
-                exact={route.exact}
-                component={route.component}
-            >
-                {route.children ? renderRoutes(route.children) : ''}
-            </Route>
-        ))}
-        <Redirect to={routes[0].path}/>
+export const renderRoutes = (routes) => (
+    <Router>
+        <Switch>
+            {switchRoute(routes)}
+        </Switch>
+    </Router>
+)
+
+export const switchRoute = (routes = [], matchUrl = '/') => (
+    <Switch>
+        {routes.map((route, i) => {
+            let {path, exact, children = []} = route
+            return <Route
+                key={path || i}
+                exact={exact || false}
+                path={matchUrl === '/' ? `/${path}` : `${matchUrl}/${path}`}
+                render={(props) => (
+                    <route.component {...props} children={children} />
+                )}
+            />
+        })}
+        {routes.length !== 0 && <Redirect to={matchUrl === '/' ? `/${routes[0].path}` : `${matchUrl}/${routes[0].path}`} />}
     </Switch>
-}
-
-export default renderRoutes
+)
