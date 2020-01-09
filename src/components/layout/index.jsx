@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import { Layout, Menu, Icon } from 'antd'
-import './index.less'
 import {switchRoute} from '@/utils/renderRoutes'
+import MyHeader from '../myHeader'
+import './index.less'
 
 const { SubMenu } = Menu;
 const { Header, Content, Footer, Sider } = Layout;
@@ -13,13 +14,12 @@ export default class MyMain extends Component {
     this.props.history.push({pathname, state: {day: 'Friday'}})
   }
   render() {
-    console.log(22222)
-    console.log(this)
+    console.log(MyHeader)
     return (
       <div className='MyMain'>
         <Layout className="layout">
           <Header>
-            <div className="logo" />
+            <MyHeader/>
           </Header>
           <Content>
             <Layout style={{ background: '#fff' }}>
