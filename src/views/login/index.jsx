@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Input, Button, Icon } from 'antd'
+import { Input, Button, Icon, message } from 'antd'
 import './index.less'
 import { loginApi } from '@/api'
 
@@ -23,9 +23,29 @@ export default class Login extends Component {
     }
     static resetPassword = () => {
     }
-    static handleLogin = () => {
+    handleLogin = async() => {
+        if (!this.state.params.Name) {
+            message.error('Please enter your Windows ID')
+        } else if (!this.state.params.Password) {
+            message.error('Please enter your password')
+        } else if (!this.state.params.Code) {
+            message.error('Please enter the verification code')
+        } else {
+            let res = await loginApi.login(this.state.params)
+            if (res.data.Success) {
+                window.sessionStorage.roles = res.data.Menus.join(',')
+                window.sessionStorage.IsAdmin = res.data.IsAdmin
+                window.sessionStorage.userName = res.data.Display
+                this.props.history.push({pathname: '/main', state: {day: 'Friday'}})
+            } else {
+                message.error(res.data.Message)
+                this.toggleCode()
+            }
+        }
+
     }
     handleChange = (target, val) => {
+        console.log(1111)
         let a = val.target.value
         this.setState(({ params }) => ({ params: { ...params, [target]: a } }))
     }

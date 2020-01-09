@@ -14,7 +14,6 @@ export default class MyMain extends Component {
     this.props.history.push({pathname, state: {day: 'Friday'}})
   }
   render() {
-    console.log(MyHeader)
     return (
       <div className='MyMain'>
         <Layout className="layout">
