@@ -14,6 +14,12 @@ export default class MyMain extends Component {
     this.props.history.push({pathname, state: {day: 'Friday'}})
   }
   render() {
+    let a = this.props.location.pathname.split('/')
+    let defaultOpenKeys = [a[2]]
+    let defaultSelectedKeys = [a[3]]
+    console.log(a)
+    console.log(defaultOpenKeys)
+    console.log(defaultSelectedKeys)
     return (
       <div className='MyMain'>
         <Layout className="layout">
@@ -26,8 +32,8 @@ export default class MyMain extends Component {
                 <Menu
                   onClick={this.MenuItemClick}
                   mode="inline"
-                  defaultSelectedKeys={['loginLog']}
-                  defaultOpenKeys={['admininstration']}
+                  defaultSelectedKeys={defaultSelectedKeys}
+                  defaultOpenKeys={defaultOpenKeys}
                   style={{ height: '100%' }}
                 >
                   <SubMenu
