@@ -14,7 +14,7 @@ const userInfoInit = {
 const userInfo = function (state = userInfoInit, action) {
     switch (action.type) {
         case AUTH_SUCCESS :
-            return {...userInfoInit, name: action.data}
+            return {...state, name: action.data}
         case DECREMENT :
             return {...state, count: state.count - 10}
         case INCREMENT :

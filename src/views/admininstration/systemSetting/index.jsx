@@ -21,7 +21,7 @@ class SystemSetting extends Component {
                <Button onClick={this.props.decrement} type='primary'>加</Button>
                <br/>
                <Button onClick={this.props.increment} type='default'>减</Button>
-               <Input onChange={val => this.props.ChangeUserInfo(val.target.value)}/>
+               <Input onChange={val => this.props.ChangeUserInfo(val.target.value)} defaultValue={this.props.name}/>
            </div>
        )
     }
