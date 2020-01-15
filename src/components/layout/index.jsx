@@ -60,7 +60,7 @@ export default class MyMain extends React.Component {
                   </SubMenu>
                 </Menu>
               </Sider>
-              <Content style={{ padding: '0 24px', minHeight: 280 }}>
+              <Content>
                 {switchRoute(this.props.children, this.props.match.path)}
               </Content>
             </Layout>
