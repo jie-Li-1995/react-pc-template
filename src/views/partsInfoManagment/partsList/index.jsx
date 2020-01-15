@@ -57,7 +57,9 @@ export default class Login extends Component {
           </Tooltip>
 
           <Tooltip title='View Customization' placement='top'>
-            <i
+            <Icon
+              type='setting'
+              theme='filled'
               className='fa fa-cog flr ml'
               onClick='$router.push({name: " TemplateSetting"})'
             />
