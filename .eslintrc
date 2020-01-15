@@ -1,0 +1,31 @@
+{
+  "env": {
+    "commonjs": true,
+    "node": true,
+    "browser": true,
+    "es6": true,
+    "serviceworker": true
+  },
+  "parser": "babel-eslint",
+  // 解析器配置
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "ecmaVersion": 2018,
+    "sourceType": "module"
+  },
+  // 可以全局使用变量
+  "globals": {
+    "Babel": true,
+    "React": true
+  },
+  "extends": ["standard-react", "standard"],
+  "plugins": ["react-hooks"],
+  "rules": {
+    "react/prop-types": 0,
+    "react/jsx-handler-names": 0,
+    "react/jsx-closing-bracket-location": 0,
+    "prefer-const": 0
+  }
+}

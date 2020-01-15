@@ -1,18 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
-    <meta
-      name="description"
-      content="Web site created using create-react-app"
-    />
-    <title>banz-h6</title>
-  </head>
-  <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"></div>
-  </body>
+<head>
+  <meta charset="utf-8" />
+  <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#000000" />
+  <meta
+          name="description"
+          content="Web site created using create-react-app"
+  />
+  <title>benz-h6</title>
+  <style>
+    body {
+      position: relative;
+    }
+    #axios-loading {
+      z-index: 998;
+      position: fixed!important;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(255, 255, 255, .8);
+      display: flex!important;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      line-height: 50px;
+      visibility: hidden;
+    }
+  </style>
+</head>
+<body>
+<noscript>You need to enable JavaScript to run this app.</noscript>
+  <div id="root">
+  </div>
+  <div id="axios-loading" class="ant-spin ant-spin-spinning ant-spin-show-text">
+      <span class="ant-spin-dot ant-spin-dot-spin">
+        <i class="ant-spin-dot-item"></i>
+        <i class="ant-spin-dot-item"></i>
+        <i class="ant-spin-dot-item"></i>
+        <i class="ant-spin-dot-item"></i>
+      </span>
+    <div class="ant-spin-text">Loading...</div>
+  </div>
+</body>
 </html>

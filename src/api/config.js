@@ -1,19 +1,19 @@
 import axios from 'axios'
-import {HashRouter} from 'react-router-dom'
+import { HashRouter } from 'react-router-dom'
 
 const router = new HashRouter()
-//创建axios实例
+// 创建axios实例
 const service = axios.create({
   baseURL: '/api/', // api的base_url
   timeout: 200000, // 请求超时时间
   withCredentials: true // 选项表明了是否是跨域请求
 })
+let loading = document.getElementById('axios-loading')
+let request = 0
 // 请求头设置
 service.interceptors.request.use(config => {
-  // if (request === 0) {
-  //   loadingService = Loading.service(loadingOptions)
-  // }
-  // request++
+  if (request === 0) loading.style.visibility = 'visible'
+  request++
   config.headers.AuthToken = window.sessionStorage.token || ''
   return config
 }, err => {
@@ -24,12 +24,12 @@ service.interceptors.request.use(config => {
 // respone拦截器
 service.interceptors.response.use(
   res => {
-    let token = res.data.Token || ''
-    let State = res.data.StatusCode
+    const token = res.data.Token || ''
+    const State = res.data.StatusCode
     if (token) window.sessionStorage.token = token
     if (State === 403) router.history.push('/')
-    // request--
-    // if (request === 0) loadingService.close()
+    request--
+    if (request === 0) loading.style.visibility = 'hidden'
     return res
   },
   error => {

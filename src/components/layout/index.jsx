@@ -1,64 +1,62 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { Layout, Menu, Icon } from 'antd'
-import {switchRoute} from '@/utils/renderRoutes'
+import { switchRoute } from '@/utils/renderRoutes'
 import MyHeader from '../myHeader'
 import './index.less'
 
-const { SubMenu } = Menu;
-const { Header, Content, Footer, Sider } = Layout;
+const { SubMenu } = Menu
+const { Header, Content, Footer, Sider } = Layout
 
-export default class MyMain extends Component {
+export default class MyMain extends React.Component {
   state = {}
   MenuItemClick = (item) => {
-    let pathname = `${this.props.match.path}/${item.keyPath.reverse().join('/')}`
-    this.props.history.push({pathname, state: {day: 'Friday'}})
+    const pathname = `${this.props.match.path}/${item.keyPath.reverse().join('/')}`
+    this.props.history.push({ pathname, state: { day: 'Friday' } })
   }
-  render() {
-    let a = this.props.location.pathname.split('/')
-    let defaultOpenKeys = [a[2]]
-    let defaultSelectedKeys = [a[3]]
-    console.log(a)
-    console.log(defaultOpenKeys)
-    console.log(defaultSelectedKeys)
+
+  render () {
+    const a = this.props.location.pathname.split('/')
+    const defaultOpenKeys = [a[2]]
+    const defaultSelectedKeys = [a[3]]
     return (
       <div className='MyMain'>
-        <Layout className="layout">
+        <Layout className='layout'>
           <Header>
-            <MyHeader/>
+            <MyHeader />
           </Header>
           <Content>
             <Layout style={{ background: '#fff' }}>
               <Sider width={200} style={{ background: '#fff' }}>
                 <Menu
                   onClick={this.MenuItemClick}
-                  mode="inline"
+                  mode='inline'
                   defaultSelectedKeys={defaultSelectedKeys}
                   defaultOpenKeys={defaultOpenKeys}
                   style={{ height: '100%' }}
                 >
                   <SubMenu
-                    key="admininstration"
+                    key='admininstration'
                     title={
                       <span>
-                        <Icon type="alipay-circle" />
+                        <Icon type='alipay-circle' />
                         admininstration
                       </span>
                     }
                   >
-                    <Menu.Item key="loginLog">loginLog</Menu.Item>
-                    <Menu.Item key="systemSetting">systemSetting</Menu.Item>
+                    <Menu.Item key='loginLog'>loginLog</Menu.Item>
+                    <Menu.Item key='systemSetting'>systemSetting</Menu.Item>
                   </SubMenu>
                   <SubMenu
-                    key="partsInfoManagment"
+                    key='partsInfoManagment'
                     title={
                       <span>
-                        <Icon type="wechat" />
+                        <Icon type='wechat' />
                         partsInfoManagment
-                     </span>
+                      </span>
                     }
                   >
-                    <Menu.Item key="partsList">partsList</Menu.Item>
-                    <Menu.Item key="vehicleList">vehicleList</Menu.Item>
+                    <Menu.Item key='partsList'>partsList</Menu.Item>
+                    <Menu.Item key='vehicleList'>vehicleList</Menu.Item>
                   </SubMenu>
                 </Menu>
               </Sider>
