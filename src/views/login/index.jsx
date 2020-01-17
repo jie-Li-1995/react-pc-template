@@ -46,7 +46,6 @@ export default class Login extends Component {
         this.toggleCode()
       }
     }
-
   }
 
   handleChange = (target, val) => {
@@ -86,33 +85,45 @@ export default class Login extends Component {
           </h2>
           <div className='left LoginDiv'>Log In</div>
           <div>
-            <Input placeholder='Windows ID' autoFocus onChange={e => {
-              this.handleChange('Name', e)
-            }}
-                   prefix={<Icon type='user' style={{ color: 'rgba(255,255,255,.25)', fontSize: '16px' }} />}></Input>
+            <Input
+              placeholder='Windows ID'
+              autoFocus
+              onChange={e => {
+                this.handleChange('Name', e)
+              }}
+              prefix={<Icon type='user' style={{ color: 'rgba(255,255,255,.25)', fontSize: '16px' }} />}
+            />
           </div>
           <div>
-            <Input placeholder='Password' type='password' onChange={e => {
-              this.handleChange('Password', e)
-            }}
-                   prefix={<Icon type='lock' style={{ color: 'rgba(255,255,255,.25)', fontSize: '16px' }} />}></Input>
+            <Input
+              placeholder='Password'
+              type='password'
+              onChange={e => {
+                this.handleChange('Password', e)
+              }}
+              prefix={<Icon type='lock' style={{ color: 'rgba(255,255,255,.25)', fontSize: '16px' }} />} />
           </div>
           <div className='verificationDiv'>
-            <Input placeholder='Verification code' onChange={e => {
-              this.handleChange('Code', e)
-            }}
-                   prefix={<Icon type='safety-certificate'
-                                 style={{ color: 'rgba(255,255,255,.25)', fontSize: '16px' }} />}
-                   suffix={<span onClick={this.toggleCode} className='VerificationCodeSpan'
-                                 style={{ backgroundImage: this.state.inputCode }}></span>
-                   }
-            ></Input>
+            <Input
+              placeholder='Verification code'
+              onChange={e => {
+                this.handleChange('Code', e)
+              }}
+              prefix={<Icon
+                type='safety-certificate'
+                style={{ color: 'rgba(255,255,255,.25)', fontSize: '16px' }}
+              />}
+              suffix={<span
+                className='VerificationCodeSpan'
+                onClick={this.toggleCode}
+                style={{ backgroundImage: this.state.inputCode }}
+              />}
+            />
           </div>
           <div className='right' onClick={this.resetPassword}><span className='ForgotPassword'>Forget password</span>
           </div>
           <div className='spaceBetween'>
             <div>
-              {/* eslint-disable-next-line react/jsx-handler-names */}
               <Button onClick={this.goRegister} className='DefaultBtn' type='primary'>Sign up</Button>
             </div>
             <div>
